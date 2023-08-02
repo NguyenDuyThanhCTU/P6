@@ -276,16 +276,24 @@ export const HeaderItems = [
     link: "/gioi-thieu",
   },
   {
-    name: "Thuê xe",
-    link: "/thue-xe",
+    name: "Mái tôn",
+    link: "/mai-ton",
   },
   {
-    name: "Đặt xe trực tuyến",
-    link: "",
+    name: "Báo giá",
+    link: "bao-gia",
   },
   {
-    name: "Gọi xe 0933456474",
-    link: "",
+    name: "Công trình thi công",
+    link: "cong-trinh-thi-cong",
+  },
+  {
+    name: "Tin tức",
+    link: "tin-tuc",
+  },
+  {
+    name: "Liên hệ",
+    link: "lien-he",
   },
 ];
 
