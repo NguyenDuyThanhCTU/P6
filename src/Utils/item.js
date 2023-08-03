@@ -116,7 +116,7 @@ export const SocialMediaDashboard = [
     icon: "SiZalo",
     image:
       "https://atpsoftware.vn/wp-content/uploads//2020/03/20211208103735_id_zalo-1.jpg",
-    style: "hover:text-blue-400 hover:bg-white w-10",
+    style: "hover:text-blue-400 hover:bg-white",
   },
   {
     title: "Facebook cá nhân",
@@ -176,7 +176,7 @@ export const SocialMediaCustom = [
     icon: "SiZalo",
     image:
       "https://atpsoftware.vn/wp-content/uploads//2020/03/20211208103735_id_zalo-1.jpg",
-    style: "hover:text-blue-600 hover:bg-white w-10",
+    style: "hover:text-blue-600 hover:bg-white ",
   },
   {
     id: 1,
@@ -277,23 +277,23 @@ export const HeaderItems = [
   },
   {
     name: "Mái tôn",
-    link: "/mai-ton",
+    link: "/collection/mai-ton",
   },
   {
     name: "Báo giá",
-    link: "bao-gia",
+    link: "/collection/bao-gia",
   },
   {
     name: "Công trình thi công",
-    link: "cong-trinh-thi-cong",
+    link: "/collection/cong-trinh-thi-cong",
   },
   {
     name: "Tin tức",
-    link: "tin-tuc",
+    link: "/collection/tin-tuc",
   },
   {
     name: "Liên hệ",
-    link: "lien-he",
+    link: "/lien-he",
   },
 ];
 

@@ -1,7 +1,17 @@
-import React from "react";
+import React, { useEffect } from "react";
+import Section1 from "./Section/Section1";
+import Section2 from "./Section/Section2";
 
 const Home = () => {
-  return <div className="bg-gray-600 h-[100vh]">Home</div>;
+  useEffect(() => {
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  }, []);
+  return (
+    <div className="">
+      <Section1 />
+      <Section2 />
+    </div>
+  );
 };
 
 export default Home;

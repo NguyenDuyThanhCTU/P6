@@ -13,21 +13,23 @@ const ClientLayout = ({ children }) => {
   const { TradeMarkData } = useData();
 
   return (
-    <>
-      {/* <Helmet>
+    <div className="">
+      <Helmet>
         <title>{TradeMarkData.websiteName}</title>
         <link rel="icon" href={TradeMarkData.websiteIco} />
-      </Helmet> */}
+      </Helmet>
       <Loading />
 
       <Header />
       <div className=" ">{children}</div>
       <Footer />
-      <OnTop />
-      <Hotline />
+      <div className="relative z-50">
+        <Hotline />
+        <OnTop />
+      </div>
 
       <Copyright />
-    </>
+    </div>
   );
 };
 

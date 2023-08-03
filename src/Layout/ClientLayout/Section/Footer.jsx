@@ -55,22 +55,26 @@ const Footer = () => {
         </div>
         <div className="flex flex-col gap-4 uppercase ">
           <h3 className="text-center font-bold border-b mx-2">Chi nhánh</h3>
-
+          <div className="flex gap-1 items-center">
+            <CiLocationOn /> <p>Chi nhánh : </p>
+          </div>
           {FooterBranceItems.map((items, idx) => (
             <div
               key={idx}
               className="hover:text-blue-600 flex items-center gap-2"
             >
               <div className="flex gap-1 items-center">
-                <CiLocationOn /> <p>Chi nhánh {idx + 1}: </p>
+                <p> Số {idx + 1}: </p>
               </div>
               <Link href={items.link}>{items.name}</Link>
             </div>
           ))}
         </div>
         <div className="flex flex-col gap-5">
-          <div className="flex flex-col ">
-            <h3>Kết nối với chúng tôi</h3>
+          <div className="flex flex-col gap-2 ">
+            <h3 className="text-center font-bold border-b mx-2 uppercase">
+              Kết nối với chúng tôi
+            </h3>
             <div className="flex mt-2 gap-2">
               {SocialMediaCustom.map((items, idx) => {
                 let Icon = IconMapping[items.icon];

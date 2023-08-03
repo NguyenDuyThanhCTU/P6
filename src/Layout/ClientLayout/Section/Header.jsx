@@ -64,13 +64,11 @@ const Header = () => {
                 </div>
                 <div>
                   <p className="text-[#1d5f7e]"> Điện thoại</p>
-                  <span className="text-redPrimmary">0979357862</span>
+                  <span className="text-redPrimmary">{ContactData.phone}</span>
                 </div>
                 <div>
                   <p className="text-[#1d5f7e]"> Email</p>
-                  <span className="text-redPrimmary">
-                    duongtrunghieu6666@gmail.com
-                  </span>
+                  <span className="text-redPrimmary">{ContactData.email}</span>
                 </div>
               </div>
             </div>
