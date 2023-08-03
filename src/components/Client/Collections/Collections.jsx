@@ -26,7 +26,7 @@ const Collections = () => {
           .unix(items.createdAt.seconds)
           .format("MMMM DD, YYYY");
         return (
-          <Link to="/post/1">
+          <Link to={`/post/${items.id}`}>
             <div className="border shadow-md cursor-pointer hover:shadow-xl duration-300">
               <div className="flex gap-5 p-3">
                 <div className="flex-[35%]">
