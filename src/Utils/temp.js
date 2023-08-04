@@ -40,9 +40,8 @@ export const PostItems = [
   {
     id: "1",
     title: "SỬA CHỮA MÁI TÔN TẠI HÀ NỘI",
-    content:
-      "Hiện nay, mái tôn được sử dụng phổ biến từ nhà dân cho đến các ... ",
-    content1: [
+
+    content: [
       {
         title:
           " Hiện nay, mái tôn được sử dụng phổ biến từ nhà dân cho đến các nhà máy, nhà xưởng trên khắp cả nước. Nhờ ưu điểm chi phí lắp đặt rẻ, dễ dàng thi công và phù hợp với khí hậu của Việt Nam",
@@ -63,6 +62,46 @@ export const PostItems = [
           "https://cokhiannhien.vn/wp-content/uploads/2022/02/Untitled-1400x788.png",
         imageName: "Máy tôn",
         type: "content0",
+      },
+      {
+        title: "Mục 2",
+        content:
+          " Hiện nay, mái tôn được sử dụng phổ biến từ nhà dân cho đến các nhà máy, nhà xưởng trên khắp cả nước. Nhờ ưu điểm chi phí lắp đặt rẻ, dễ dàng thi công và phù hợp với khí hậu của Việt Nam",
+        content1:
+          "Tuy nhiên, bởi được từ vật liệu kim loại cho nên dễ bị ảnh hưởng bởi các yếu tố tự nhiên của thời tiết nóng ẩm. Tất nhiên, các mái tôn hiện nay thường được nhà sản xuất phủ một lớp sơn chống gỉ hoặc chống nóng, tuy nhiên thì độ bền, tính hiệu quả của lớp bảo vệ này không cao. Mái tôn sau một thời gian sử dụng sẽ bị gỉ, hỏng và mất đi chức năng chính của nó là che mưa che nắng cho công trình.",
+        image:
+          "https://cokhiannhien.vn/wp-content/uploads/2022/02/Untitled-1400x788.png",
+        imageName: "Máy tôn",
+        type: "content1",
+      },
+      {
+        title: "Mục 3",
+        content:
+          " Hiện nay, mái tôn được sử dụng phổ biến từ nhà dân cho đến các nhà máy, nhà xưởng trên khắp cả nước. Nhờ ưu điểm chi phí lắp đặt rẻ, dễ dàng thi công và phù hợp với khí hậu của Việt Nam",
+        content1:
+          "Tuy nhiên, bởi được từ vật liệu kim loại cho nên dễ bị ảnh hưởng bởi các yếu tố tự nhiên của thời tiết nóng ẩm. Tất nhiên, các mái tôn hiện nay thường được nhà sản xuất phủ một lớp sơn chống gỉ hoặc chống nóng, tuy nhiên thì độ bền, tính hiệu quả của lớp bảo vệ này không cao. Mái tôn sau một thời gian sử dụng sẽ bị gỉ, hỏng và mất đi chức năng chính của nó là che mưa che nắng cho công trình.",
+        image: [
+          {
+            url: "https://cokhiannhien.vn/wp-content/uploads/2022/02/Untitled-1400x788.png",
+            name: "Máy tôn",
+          },
+          {
+            url: "https://cokhiannhien.vn/wp-content/uploads/2022/02/Untitled-1400x788.pnghttps://cokhiannhien.vn/wp-content/uploads/2021/05/Untitled-5-2-461x300-17.png",
+            name: "Máy tôn",
+          },
+        ],
+        type: "content2",
+      },
+      {
+        title: "Mục 4",
+        content:
+          " Hiện nay, mái tôn được sử dụng phổ biến từ nhà dân cho đến các nhà máy, nhà xưởng trên khắp cả nước. Nhờ ưu điểm chi phí lắp đặt rẻ, dễ dàng thi công và phù hợp với khí hậu của Việt Nam",
+        content1:
+          "Tuy nhiên.Tuy nhiên.Tuy nhiên.Tuy nhiên.Tuy nhiên.Tuy nhiên, bởi được từ vật liệu kim loại cho nên dễ bị ảnh hưởng bởi các yếu tố tự nhiên của thời tiết nóng ẩm. Tất nhiên, các mái tôn hiện nay thường được nhà sản xuất phủ một lớp sơn chống gỉ hoặc chống nóng, tuy nhiên thì độ bền, tính hiệu quả của lớp bảo vệ này không cao. Mái tôn sau một thời gian sử dụng sẽ bị gỉ, hỏng và mất đi chức năng chính của nó là che mưa che nắng cho công trình.",
+        image:
+          "https://cokhiannhien.vn/wp-content/uploads/2022/02/Untitled-1400x788.png",
+        imageName: "Máy tôn",
+        type: "content3",
       },
       {
         title: "Những sự cố hư hỏng phổ biến của mái tôn",
@@ -87,40 +126,6 @@ export const PostItems = [
     type: "mai-ton",
     nameType: "Mái tôn",
 
-    createdAt: "July 20, 2023 at 9:21:04 AM UTC+7",
-  },
-  {
-    id: "2",
-    title:
-      "BÁO GIÁ THI CÔNG MÁI TÔN GIÁ RẺ TẠI HÀ NỘI – Thi công nhanh chóng | Giá rẻ",
-    content:
-      "Mái tôn là vật liệu xây dựng không thể thiếu và có ý nghĩa quan ... ",
-    image:
-      "https://cokhiannhien.vn/wp-content/uploads/2021/05/Untitled-5-2-461x300-17.png",
-    type: "bao-gia",
-    nameType: "Báo giá",
-    createdAt: "July 20, 2023 at 9:21:04 AM UTC+7",
-  },
-  {
-    id: "3",
-    title: "THI CÔNG PHÒNG MÁI BẰNG TÔN PANEL TẠI LẠC LONG QUÂN",
-    content:
-      "THI CÔNG PHÒNG MÁI BẰNG TÔN PANEL TẠI LẠC LONG QUÂN   BÁO GIÁ THI ... ",
-    image:
-      "https://cokhiannhien.vn/wp-content/uploads/2021/09/Untitled-2-580x300-1.png",
-    type: "cong-trinh-thi-cong",
-    nameType: "Công trình thi công",
-    createdAt: "July 20, 2023 at 9:21:04 AM UTC+7",
-  },
-  {
-    id: "4",
-    title: "THI CÔNG MÁI TÔN NHÀ XƯỞNG",
-    content:
-      "Đối với nhà xưởng thì mái tôn là một vật dụng đóng một vai trò ... ",
-    image:
-      "https://cokhiannhien.vn/wp-content/uploads/2021/05/Untitled-8-480x300-4.png",
-    type: "tin-tuc",
-    nameType: "Tin tức",
     createdAt: "July 20, 2023 at 9:21:04 AM UTC+7",
   },
 ];

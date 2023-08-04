@@ -158,3 +158,40 @@
 }
 
 
+.text-content{
+  font-family: 'Lexend Deca',sans-serif;
+  font-size: 18px;
+  font-weight:  300;
+  text-indent: 1.25rem;
+}
+
+.text-note{
+  font-family: 'Montserrat',sans-serif;
+  font-size: 26px;
+  font-weight:  300;
+  text-indent: 1.25rem;
+  color: #2c2c2c;
+}
+.text-note-bold{
+  font-family: 'Lexend Deca',sans-serif;
+  font-size: 22px;
+  font-weight:  600;
+  text-indent: 1.25rem;
+  color: #2c2c2c;
+}
+
+.text-title{
+  color: #333333;
+  font-family: 'Montserrat',sans-serif;
+font-size: 32px;
+font-weight: 300;
+}
+
+.text-list{
+  font-family: 'Lexend Deca',sans-serif;
+  font-size: 18px;
+  font-weight:  300;
+  text-indent: 1.25rem;
+}
+
+

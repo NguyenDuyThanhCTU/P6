@@ -11,6 +11,9 @@ const Collections = () => {
   useEffect(() => {
     window.scrollTo({ top: 0, behavior: "smooth" });
   }, [id]);
+  useEffect(() => {
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  }, []);
 
   useEffect(() => {
     const sortType = PostItems.filter((product) => product.type === id);
@@ -33,15 +36,17 @@ const Collections = () => {
                   <img
                     src={items.image}
                     alt="product image"
-                    className="h-[190px] object-cover w-full"
+                    className="h-[190px] object-contain w-full"
                   />
                 </div>
                 <div className="flex-[65%] flex flex-col gap-1">
-                  <h3 className="font-semibold text-[18px] hover:underline hover:text-blue-500">
+                  <h3 className="font-semibold d:text-[18px] p:text-[16px] hover:underline hover:text-blue-500">
                     {items.title}
                   </h3>
-                  <p>{items.content}</p>
-                  <div className="flex gap-5 mt-3">
+                  <p className="truncate2 d:text-[16px] p:text-[14px]">
+                    {items.content[0]?.title}
+                  </p>
+                  <div className="flex p:gap-1 d:gap-5 mt-3 d:flex-row p:flex-col">
                     <div className="flex items-center gap-1 text-gray-400 pr-5 border-r">
                       <AiOutlineClockCircle />
                       <p className="">{DetailPostDate}</p>

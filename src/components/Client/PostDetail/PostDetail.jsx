@@ -9,6 +9,9 @@ import Beginning from "../Item/Posts/Beginning";
 import { AiOutlineClockCircle, AiOutlineUser } from "react-icons/ai";
 import moment from "moment/moment";
 import Content from "../Item/Posts/Content/Content";
+import Content1 from "../Item/Posts/Content/Content1";
+import Content2 from "../Item/Posts/Content/Content2";
+import Content3 from "../Item/Posts/Content/Content3";
 
 const PostDetail = () => {
   const [Data, setData] = useState([]);
@@ -36,9 +39,7 @@ const PostDetail = () => {
       <div className="p-4 flex flex-col gap-5">
         <div>
           <div className=" pb-5 border-b flex flex-col gap-4">
-            <h3 className="text-[#333333] text-[32px] font-light">
-              {Data.title}
-            </h3>
+            <h3 className="text-title">{Data.title}</h3>
             <div className="flex gap-5">
               <div className="uppercase p-1 text-blue-500 border border-blue-500">
                 Khác
@@ -54,11 +55,11 @@ const PostDetail = () => {
               </div>
             </div>
           </div>
-          <div className="flex flex-col gap-2">
+          <div className="flex flex-col gap-5">
             {Data && (
               <>
                 {" "}
-                {Data.content1?.map((items, idx) => (
+                {Data.content?.map((items, idx) => (
                   <>
                     {items.type === "beginning" ? (
                       <Beginning Data={items} />
@@ -66,6 +67,12 @@ const PostDetail = () => {
                       <Service />
                     ) : items.type === "content0" ? (
                       <Content Data={items} idx={idx} />
+                    ) : items.type === "content1" ? (
+                      <Content1 Data={items} idx={idx} />
+                    ) : items.type === "content2" ? (
+                      <Content2 Data={items} idx={idx} />
+                    ) : items.type === "content3" ? (
+                      <Content3 Data={items} idx={idx} />
                     ) : null}
                   </>
                 ))}

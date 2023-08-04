@@ -32,12 +32,12 @@ export const AllRoutes = [
   {
     path: "/",
     component: Home,
-    Layout: ClientLayout,
+    Layout: ContentLayout,
   },
   {
     path: "/lien-he",
     component: Contact,
-    Layout: ClientLayout,
+    Layout: ContentLayout,
   },
   {
     path: "/gioi-thieu",

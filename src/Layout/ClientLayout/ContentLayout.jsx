@@ -23,29 +23,34 @@ const ContentLayout = ({ children }) => {
       <Loading />
 
       <Header />
-      <div className="max-w-[1230px] mx-auto flex gap-5 mt-20">
-        <div className="border flex-[20%] h-[270px] shadow-xl">
-          <div className="p-2 font-LexendDeca">
-            <h3 className="text-center w-full py-3 bg-gray-300 font-bold uppercase text-[#b5967f] ">
-              Chuyên mục
-            </h3>
-            <div>
-              {HeaderItems.slice(1, 6).map((items, idx) => (
-                <Link to={items.link}>
-                  <div
-                    className={`${
-                      idx === 4 ? "border-none" : " border-b"
-                    } py-2 border-b hover:underline hover:text-blue-500`}
-                  >
-                    {items.name}
-                  </div>
-                </Link>
-              ))}
+      {children.type.name === "Home" || children.type.name === "Contact" ? (
+        <div className=" ">{children}</div>
+      ) : (
+        <div className="max-w-[1230px] mx-auto flex gap-5 d:mt-20 p:mt-2 d:flex-row p:flex-col px-2">
+          <div className="border flex-[20%] h-[270px] shadow-xl">
+            <div className="p-2 font-LexendDeca">
+              <h3 className="text-center w-full py-3 bg-gray-300 font-bold uppercase text-[#b5967f] ">
+                Chuyên mục
+              </h3>
+              <div>
+                {HeaderItems.slice(1, 6).map((items, idx) => (
+                  <Link to={items.link}>
+                    <div
+                      className={`${
+                        idx === 4 ? "border-none" : " border-b"
+                      } py-2 border-b hover:underline hover:text-blue-500`}
+                    >
+                      {items.name}
+                    </div>
+                  </Link>
+                ))}
+              </div>
             </div>
           </div>
+          <div className="flex-[80%] ">{children}</div>
         </div>
-        <div className="flex-[80%] ">{children}</div>
-      </div>
+      )}
+
       <Footer />
       <div className="relative z-50">
         <Hotline />
