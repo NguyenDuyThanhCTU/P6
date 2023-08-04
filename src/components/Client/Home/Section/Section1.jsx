@@ -5,8 +5,10 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
 
 import { Autoplay } from "swiper";
+import { useData } from "../../../../Context/DataProviders";
 
 const Section1 = () => {
+  const { Slides } = useData();
   return (
     <div>
       <Swiper
@@ -20,7 +22,7 @@ const Section1 = () => {
         className="mySwiper"
       >
         <div>
-          {HomeSlide.map((items, idx) => (
+          {Slides.map((items, idx) => (
             <>
               <SwiperSlide>
                 <img

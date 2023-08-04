@@ -60,7 +60,7 @@ const Trademark = () => {
       placeholder: TradeMarkData.websiteLogo,
     },
     {
-      name: "Logo Trang",
+      name: "Icon Trang",
       type: "input",
       placeholder: TradeMarkData.websiteIco,
     },

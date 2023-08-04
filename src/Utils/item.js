@@ -297,4 +297,11 @@ export const HeaderItems = [
   },
 ];
 
+export const TypeProductItems = [
+  {
+    name: "Danh mục sản phẩm",
+    params: "danh-muc-san-pham",
+  },
+];
+
 //Custom
