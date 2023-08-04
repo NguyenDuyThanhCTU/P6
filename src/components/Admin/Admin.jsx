@@ -42,6 +42,8 @@ const Admin = () => {
           <AddType />
         ) : isUploadProduct === "add-product" ? (
           <AddProduct />
+        ) : isUploadProduct === "add-post" ? (
+          <AddPost />
         ) : isUploadProduct === "product-detail" ? (
           <ProductDetail />
         ) : isUploadProduct === "profile" ? (

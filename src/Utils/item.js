@@ -270,30 +270,37 @@ export const HeaderItems = [
   {
     name: "Trang chủ",
     link: "/",
+    type: "",
   },
   {
     name: "Giới thiệu",
     link: "/gioi-thieu",
+    type: "gioi-thieu",
   },
   {
     name: "Mái tôn",
     link: "/collection/mai-ton",
+    type: "mai-ton",
   },
   {
     name: "Báo giá",
     link: "/collection/bao-gia",
+    type: "bao-gia",
   },
   {
     name: "Công trình thi công",
     link: "/collection/cong-trinh-thi-cong",
+    type: "cong-trinh-thi-cong",
   },
   {
     name: "Tin tức",
     link: "/collection/tin-tuc",
+    type: "tin-tuc",
   },
   {
     name: "Liên hệ",
     link: "/lien-he",
+    type: "lien-he",
   },
 ];
 

@@ -15,8 +15,7 @@ const Fetch = () => {
     setContactData,
     setTradeMarkData,
     setAccounts,
-    setPostOther,
-    setPostCompany,
+    setPosts,
     //Service
     setProductType,
     setProducts,
@@ -52,12 +51,7 @@ const Fetch = () => {
     });
 
     getProducts("posts").then((data) => {
-      const otherItems = data.reverse().filter((item) => item.type === "Other");
-      setPostOther(otherItems);
-
-      const companyItems = data.filter((item) => item.type == "Company");
-
-      setPostCompany(companyItems);
+      setPosts(data.reverse());
     });
 
     getProducts("productTypes").then((data) => {

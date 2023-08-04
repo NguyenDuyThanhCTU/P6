@@ -12,9 +12,8 @@ export const DataProviders = ({ children }) => {
 
   const [SocialMedia, setSocialMedia] = useState("");
 
-  const [PostOther, setPostOther] = useState([]);
-  const [PostCompany, setPostCompany] = useState([]);
-
+  const [Posts, setPosts] = useState("");
+  const [PostData, setPostData] = useState("");
   const [HeaderAdmin, setHeaderAdmin] = useState();
 
   const [accounts, setAccounts] = useState("");
@@ -28,14 +27,15 @@ export const DataProviders = ({ children }) => {
   return (
     <DataContext.Provider
       value={{
+        setPostData,
+        PostData,
         detailOrders,
         orders,
         setDetailOrders,
         setOrders,
-        PostOther,
-        setPostOther,
-        PostCompany,
-        setPostCompany,
+        setPosts,
+        Posts,
+
         accounts,
         setAccounts,
         setHeaderAdmin,

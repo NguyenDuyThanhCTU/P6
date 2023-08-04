@@ -8,8 +8,8 @@ const Section2 = () => {
         <h3 className="uppercase text-red-500  text-[24px] text-center font-bold">
           Về chúng tôi
         </h3>
-        <div className="flex mt-4 gap-10 max-w-[1200px] mx-auto">
-          <div className="flex flex-col gap-5 flex-1 items-center font-NunitoSans">
+        <div className="flex mt-4 gap-10 d:max-w-[1200px] d:mx-auto d:flex-row p:flex-col p:max-w-full p:mx-2">
+          <div className="flex flex-col gap-5 flex-1 items-center font-NunitoSans ">
             <p>
               <strong> Cơ khí mái tôn Trung Hiếu </strong>chuyên thi công, sửa
               chữa mái tôn, máng xối inox 304 đúng chất lượng bảo hành cho quy

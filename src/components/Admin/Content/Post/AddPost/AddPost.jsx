@@ -10,15 +10,16 @@ import { notification } from "antd";
 import { useStateProvider } from "../../../../../Context/StateProvider";
 import Input from "../../../Item/Input";
 import { addDocument } from "../../../../../Config/Services/Firebase/FireStoreDB";
+import { useData } from "../../../../../Context/DataProviders";
 
 const AddProduct = ({ type }) => {
   const [imageUrl, setImageUrl] = useState();
   const [Title, setTitle] = useState("");
   const [Content, setContent] = useState("");
   const [error, setError] = useState(false);
-
+  const { PostData } = useData();
   const { setIsUploadProduct, setIsRefetch } = useStateProvider();
-
+  console.log(PostData);
   const handleDiscard = () => {
     setImageUrl();
     setTitle("");

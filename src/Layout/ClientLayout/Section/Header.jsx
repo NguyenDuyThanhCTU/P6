@@ -68,7 +68,7 @@ const Header = () => {
                 </div>
                 <div>
                   <p className="text-[#1d5f7e]"> Email</p>
-                  <span className="text-redPrimmary">{ContactData.email}</span>
+                  <span className="text-redPrimmary">{ContactData.gmail}</span>
                 </div>
               </div>
             </div>
