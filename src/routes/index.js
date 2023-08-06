@@ -9,6 +9,7 @@ import PostDetail from "../components/Client/PostDetail/PostDetail";
 import AdminLayout from "../Layout/AdminLayout/AdminLayout";
 
 import ContentLayout from "../Layout/ClientLayout/ContentLayout";
+import ClientLayout from "../Layout/ClientLayout/ClientLayout";
 
 export const AllRoutes = [
   {

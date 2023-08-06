@@ -78,6 +78,7 @@ const UploadPost = () => {
         image: imageUrl,
         type: postType,
         nameType: postName,
+        content: [],
       };
       addDocument("posts", data).then((data) => {
         notification["success"]({

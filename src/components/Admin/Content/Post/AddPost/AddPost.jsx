@@ -1,25 +1,41 @@
 import React, { useEffect, useState } from "react";
-import { AiFillCloseCircle } from "react-icons/ai";
+import { AiFillCloseCircle, AiOutlineCloudUpload } from "react-icons/ai";
 import { FaCloudUploadAlt } from "react-icons/fa";
 
 import { ref, uploadBytes, getDownloadURL } from "firebase/storage";
 import { getStorage } from "firebase/storage";
 
-import { notification } from "antd";
+import { Empty, notification } from "antd";
 
 import { useStateProvider } from "../../../../../Context/StateProvider";
-import Input from "../../../Item/Input";
 import { addDocument } from "../../../../../Config/Services/Firebase/FireStoreDB";
 import { useData } from "../../../../../Context/DataProviders";
+import { PostLayoutItems } from "../../../../../Utils/item";
+import { BiCaretRight } from "react-icons/bi";
+import Input from "../../Item/Input";
 
 const AddProduct = ({ type }) => {
-  const [imageUrl, setImageUrl] = useState();
+  const [imageUrl, setImageUrl] = useState("");
   const [Title, setTitle] = useState("");
   const [Content, setContent] = useState("");
+  const [imageName, setImageName] = useState("");
   const [error, setError] = useState(false);
   const { PostData } = useData();
   const { setIsUploadProduct, setIsRefetch } = useStateProvider();
-  console.log(PostData);
+  const [Step, setStep] = useState(0);
+  //
+  const [selectType, setSelectType] = useState("Mở đầu");
+  const [ListType, setListType] = useState("");
+  const [selectedType, setSelectedType] = useState("");
+  ///
+  useEffect(() => {
+    const listType = PostLayoutItems.filter((item) => item.name === selectType);
+    if (listType) {
+      setListType(listType[0]);
+    }
+  }, [selectType, PostLayoutItems]);
+
+  //
   const handleDiscard = () => {
     setImageUrl();
     setTitle("");
@@ -89,6 +105,10 @@ const AddProduct = ({ type }) => {
     }
   };
 
+  const HandleUploadContent = () => {
+    data = {};
+  };
+
   return (
     <div
       className={`bg-[rgba(0,0,0,0.3)] w-full 
@@ -97,102 +117,210 @@ const AddProduct = ({ type }) => {
     >
       <div className="w-[1500px] h-[700px] absolute bg-white bottom-[15%] left-[12%]  font-LexendDeca cursor-pointer rounded-sm flex flex-col justify-center">
         <p className="text-2xl font-bold text-center text-[30px] mb-5">
-          Tải bài viết lên trang của bạn
+          Thêm nội dung vào bài viết của bạn
         </p>
         <div className="flex">
-          <div className="justify-center   w-full flex items-center gap-20">
-            <div className="">
+          <div className="justify-center   w-[1200px] mx-auto flex items-center gap-20">
+            <div className="flex-[20%]">
               <div className="">
                 <p className="text-md text-gray-400 mt-1">
-                  Chọn ảnh cho bài viết của bạn
+                  Danh sách nội dung đã thêm
                 </p>
               </div>
-              <div className=" border-dashed rounded-xl border-4 border-gray-200 flex flex-col justify-center items-center  outline-none mt-5 w-[260px] h-[458px] p-10 cursor-pointer hover:border-red-300 hover:bg-gray-100">
-                {imageUrl ? (
-                  <div>
-                    <img
-                      src={imageUrl}
-                      className="w-[100%] h-[100%] object-cover"
-                      alt=""
-                    />
-                    <label>
-                      <p className="bg-[#F51997] text-center mt-8 rounded text-white text-md font-medium p-2 w-52 outline-none">
-                        Chọn lại
-                      </p>
-                      <input
-                        id="fileInput"
-                        type="file"
-                        onChange={(e) => uploadImage(e)}
-                        className="w-0 h-0"
-                      />
-                    </label>
-                  </div>
-                ) : (
-                  <label className="cursor-pointer">
-                    <div className="flex flex-col items-center justify-center h-full">
-                      <div className="flex flex-col justify-center items-center">
-                        <p className="font-bold text-xl">
-                          <FaCloudUploadAlt className="text-gray-300 text-6xl" />
-                        </p>
-                        <p className="text-xl font-semibold">
-                          Chọn hình ảnh để tải lên
-                        </p>
-                      </div>
-                      <p className="text-gray-400  text-center mt-10 text-sm leading-10">
-                        Định dạng jpg hoặc png <br />
-                      </p>
-                      <p className="bg-[#0047AB] hover:bg-[#0000FF] text-center mt-8 rounded text-white text-md font-medium p-2 w-52 outline-none">
-                        Chọn từ thiết bị
-                      </p>
-                    </div>
-                    <input
-                      type="file"
-                      onChange={(e) => uploadImage(e)}
-                      className="w-0 h-0"
-                      id="fileInput"
-                    />
-                  </label>
-                )}
-              </div>
+              <div className=" border-dashed rounded-xl border-4 border-gray-200 flex flex-col justify-center items-center  outline-none mt-5 w-[260px] h-[458px] p-10 cursor-pointer hover:border-red-300 hover:bg-gray-100"></div>
+
               {error && (
                 <p className="text-center text-xl text-red-400 font-semibold mt-4 w-[260px]">
                   Vui lòng chọn đúng định dạng
                 </p>
               )}
             </div>
-            <div className="flex items-center gap-10">
-              <form class=" max-w-lg w-[500px]">
-                <Input
-                  text="Tiêu đề bài viết"
-                  Value={Title}
-                  setValue={setTitle}
-                  type="input"
-                />
-                <Input
-                  text="Nội dung bài viết"
-                  Value={Content}
-                  setValue={setContent}
-                  type="textarea"
-                />
-
-                <div className="flex gap-6 mt-10">
-                  <button
-                    onClick={() => handleDiscard()}
-                    type="button"
-                    className="border-gray-300 border-2 text-md font-medium p-2 rounded w-28 lg:w-44 outline-none"
-                  >
-                    Xóa
-                  </button>
-                  <button
-                    //disabled={videoAsset?.url ? false : true}
-                    onClick={() => HandleSubmit()}
-                    type="button"
-                    className="bg-[#df6cad] hover:bg-red-500 focus:outline-none focus:shadow-outline text-white text-md font-medium p-2 rounded w-28 lg:w-44 outline-none"
-                  >
-                    Tải lên
-                  </button>
+            <div className="flex items-center gap-10 flex-[80%] h-full">
+              <div className="flex flex-col  gap-4 p-4 items-center w-full h-full justify-between">
+                <div className="flex justify-between pb-4 border-b w-full">
+                  <div className="py-3 px-10 bg-gray-300  font-bold uppercase text-black w-[400px] text-center">
+                    {Step === 2
+                      ? "Thêm nội dung bài viết"
+                      : "Chọn cách trình bày"}
+                  </div>
+                  <div className="flex items-center gap-4 mr-4">
+                    <div
+                      className={`w-3 h-3 rounded-full duration-300  ${
+                        Step === 1 || Step === 0
+                          ? "bg-blue-400 scale-110"
+                          : "bg-gray-400"
+                      }`}
+                    ></div>
+                    <div
+                      className={`w-3 h-3 rounded-full   ${
+                        Step === 2 ? "bg-blue-400 scale-110" : "bg-gray-400"
+                      }`}
+                    ></div>
+                  </div>
                 </div>
-              </form>
+                <div className="h-full text-black w-full flex">
+                  {Step === 2 ? (
+                    <div className="overflow-y-scroll h-[325px] w-full  grid grid-cols-3 gap-5 ">
+                      {selectedType === "Beginning-1" ? (
+                        <>
+                          <div>
+                            <Input
+                              text={`Thêm tiêu đề`}
+                              Value={Title}
+                              setValue={setTitle}
+                            />
+                            <Input
+                              text={`Thêm nội dung`}
+                              Value={Content}
+                              setValue={setContent}
+                            />
+                            <Input
+                              text={`Thêm tên ảnh`}
+                              Value={imageName}
+                              setValue={setImageName}
+                            />
+                          </div>
+                          <div>
+                            <Input
+                              text={`Liên kết ảnh`}
+                              Value={imageUrl}
+                              setValue={setImageUrl}
+                            />
+                            <span>Hoặc</span>
+                            <div className="flex gap-1 items-center py-3 justify-center mt-3 bg-red-500 hover:bg-red-600 border text-white rounded-full">
+                              <p>Tải lên</p>
+                              <AiOutlineCloudUpload className="text-[24px] " />
+                            </div>
+                          </div>
+                          <div className="h-full w-[230px] border flex items-center justify-center">
+                            <div className=" p-2 ">
+                              {imageUrl ? (
+                                <>
+                                  {" "}
+                                  <img
+                                    src={imageUrl}
+                                    alt=""
+                                    className="w-full h-auto object-contain"
+                                  />
+                                </>
+                              ) : (
+                                <>
+                                  <Empty />
+                                </>
+                              )}
+                            </div>
+                          </div>
+                        </>
+                      ) : (
+                        <></>
+                      )}
+                    </div>
+                  ) : (
+                    <>
+                      <div className="flex-[25%] border flex flex-col justify-center ">
+                        {PostLayoutItems.map((items, idx) => (
+                          <>
+                            <div
+                              className={`flex items-center gap-3 justify-between py-4 px-6 text-[20px]  duration-300 group ${
+                                items.name === selectType
+                                  ? "text-blue-500 font-bold text-[22px]"
+                                  : "hover:text-blue-500"
+                              }`}
+                              onClick={() => {
+                                setSelectType(items.name);
+                              }}
+                            >
+                              <span>{items.name}</span>
+                              <BiCaretRight
+                                className={` ${
+                                  items.name === selectType
+                                    ? "rotate-0"
+                                    : "group-hover:rotate-0"
+                                } rotate-90  duration-300`}
+                              />
+                            </div>
+                          </>
+                        ))}
+                      </div>
+                      <div className="flex-[75%]">
+                        {ListType && (
+                          <div className=" grid grid-cols-2 px-3 gap-4  overflow-y-scroll h-[325px] ">
+                            {" "}
+                            {ListType?.type.map((items, idx) => (
+                              <>
+                                <div
+                                  className={`${
+                                    selectedType === items.name
+                                      ? "shadow-xl border-black"
+                                      : "hover:border-black hover:shadow-xl"
+                                  } border    max-h-[200px] flex flex-col items-center gap-2`}
+                                  onClick={() => setSelectedType(items.name)}
+                                >
+                                  <img
+                                    src={items.image}
+                                    alt="option"
+                                    className="h-[145px] object-contain"
+                                  />
+                                  <span>{items.name}</span>
+                                </div>
+                              </>
+                            ))}
+                          </div>
+                        )}
+                      </div>
+                    </>
+                  )}
+                </div>
+
+                <div className="flex gap-5">
+                  {Step === 1 || Step === 0 ? (
+                    <>
+                      {" "}
+                      <div className="px-10 py-3 rounded-xl border-2 border-blue-400 text-blue-400 hover:text-blue-700 hover:border-blue-700 duration-300 cursor-pointer">
+                        Loại bỏ
+                      </div>
+                      <div
+                        className="px-10 py-3 rounded-xl border-2 border-blue-500 bg-blue-500 text-white hover:bg-blue-700 duration-300 hover:border-blue-700 cursor-pointer"
+                        onClick={() => setStep(2)}
+                      >
+                        Tiếp tục
+                      </div>
+                    </>
+                  ) : (
+                    Step === 2 && (
+                      <>
+                        <div
+                          className="px-10 py-3 rounded-xl border-2 border-blue-400 text-blue-400 hover:text-blue-700 hover:border-blue-700 duration-300 cursor-pointer"
+                          onClick={() => setStep(1)}
+                        >
+                          Quay lại
+                        </div>
+                        {imageUrl ? (
+                          <div
+                            className="px-10 py-3 rounded-xl border-2 border-blue-500 bg-blue-500 text-white hover:bg-blue-700 duration-300 hover:border-blue-700 cursor-pointer"
+                            onClick={() => HandleUploadContent()}
+                          >
+                            Thêm nội dung
+                          </div>
+                        ) : (
+                          <div
+                            className="px-10 py-3 rounded-xl border-2 border-blue-500 bg-blue-500 text-white hover:bg-blue-700 duration-300 hover:border-blue-700 cursor-pointer"
+                            onClick={() => {
+                              notification["warning"]({
+                                message: "Warning",
+                                description: `
+                  Hình ảnh đang tải lên, vui lòng đợi trong giây lát !`,
+                              });
+                            }}
+                          >
+                            Thêm nội dung
+                          </div>
+                        )}
+                      </>
+                    )
+                  )}
+                </div>
+              </div>
             </div>
           </div>
         </div>

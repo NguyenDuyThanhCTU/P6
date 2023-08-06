@@ -7,6 +7,7 @@ import { StateProvider } from "./Context/StateProvider";
 import { DataProviders } from "./Context/DataProviders";
 import Fetch from "./components/Item/Fetch";
 import DefaultLayout from "./Layout/DefaultLayout";
+import Header from "./Layout/ClientLayout/Section/Header";
 const App = () => {
   return (
     <>
@@ -14,6 +15,7 @@ const App = () => {
         <StateProvider>
           <AuthProviders>
             <Fetch />
+
             <Router>
               <Routes>
                 {AllRoutes.map((route, index) => {
@@ -23,15 +25,17 @@ const App = () => {
 
                   const Page = route.component;
                   return (
-                    <Route
-                      key={index}
-                      path={route.path}
-                      element={
-                        <Layout>
-                          <Page />
-                        </Layout>
-                      }
-                    />
+                    <>
+                      <Route
+                        key={index}
+                        path={route.path}
+                        element={
+                          <Layout>
+                            <Page />
+                          </Layout>
+                        }
+                      />
+                    </>
                   );
                 })}
               </Routes>

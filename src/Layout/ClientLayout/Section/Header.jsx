@@ -122,7 +122,7 @@ const Header = () => {
               className={`fixed z-50 ${
                 IsTranslate
                   ? "w-full bg-white text-black"
-                  : " w-[1203px] bg-[#b5967f] text-white  "
+                  : " w-[1600px] bg-[#b5967f] text-white  "
               }   duration-300 h-[69px] rounded-lg flex justify-center px-5  items-center text-normal font-semibold gap-10`}
               style={{ top: `${elementTop}px` }}
             >

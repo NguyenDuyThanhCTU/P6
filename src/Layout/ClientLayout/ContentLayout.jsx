@@ -9,11 +9,12 @@ import OnTop from "./Section/OnTop";
 import Copyright from "./Section/Copyright";
 import Footer from "./Section/Footer";
 import { HeaderItems } from "../../Utils/item";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 
 const ContentLayout = ({ children }) => {
   const { TradeMarkData } = useData();
-
+  const location = useLocation();
+  console.log(location);
   return (
     <>
       <Helmet>
@@ -21,9 +22,8 @@ const ContentLayout = ({ children }) => {
         <link rel="icon" href={TradeMarkData.websiteIco} />
       </Helmet>
       <Loading />
-
       <Header />
-      {children.type.name === "Home" || children.type.name === "Contact" ? (
+      {location.pathname === "/" || location.pathname === "/lien-he" ? (
         <div className=" ">{children}</div>
       ) : (
         <div className="max-w-[1230px] mx-auto flex gap-5 d:mt-20 p:mt-2 d:flex-row p:flex-col px-2">

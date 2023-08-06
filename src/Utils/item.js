@@ -283,6 +283,16 @@ export const HeaderItems = [
     type: "mai-ton",
   },
   {
+    name: "Vách ngăn palen",
+    link: "/collection/vach-ngan-palen",
+    type: "mai-ton",
+  },
+  {
+    name: "Trần nhựa nano",
+    link: "/collection/tran-nhua-nano",
+    type: "mai-ton",
+  },
+  {
     name: "Báo giá",
     link: "/collection/bao-gia",
     type: "bao-gia",
@@ -308,6 +318,62 @@ export const TypeProductItems = [
   {
     name: "Danh mục sản phẩm",
     params: "danh-muc-san-pham",
+  },
+];
+
+export const PostLayoutItems = [
+  {
+    name: "Mở đầu",
+    type: [
+      {
+        name: "Beginning-1",
+        image:
+          "https://firebasestorage.googleapis.com/v0/b/fir-d82f9.appspot.com/o/Storage%2Fbeginning.png?alt=media&token=3a94052c-75b6-4036-8e0e-9a4bcde07668",
+      },
+    ],
+  },
+  {
+    name: "Nội dung",
+    type: [
+      {
+        name: "Content-1",
+        image:
+          "https://firebasestorage.googleapis.com/v0/b/fir-d82f9.appspot.com/o/Storage%2F2.jpg?alt=media&token=162f53a2-a812-4895-8431-86fc282b5c73",
+      },
+      {
+        name: "Content-2",
+        image:
+          "https://firebasestorage.googleapis.com/v0/b/fir-d82f9.appspot.com/o/Storage%2F1.jpg?alt=media&token=7e9c3e25-cdd9-4288-95e8-3d4906e9a187",
+      },
+      {
+        name: "Content-3",
+        image:
+          "https://firebasestorage.googleapis.com/v0/b/fir-d82f9.appspot.com/o/Storage%2F3.jpg?alt=media&token=0cfdf04f-bf37-4a39-bbfc-ddae2a0d0aca",
+      },
+      {
+        name: "Content-4",
+        image:
+          "https://firebasestorage.googleapis.com/v0/b/fir-d82f9.appspot.com/o/Storage%2F4.png?alt=media&token=4843db86-505e-404f-9bea-8cafdebed861",
+      },
+    ],
+  },
+  {
+    name: "Hình ảnh",
+    type: [
+      {
+        name: "",
+        image: "",
+      },
+    ],
+  },
+  {
+    name: "Kết thúc",
+    type: [
+      {
+        name: "",
+        image: "",
+      },
+    ],
   },
 ];
 

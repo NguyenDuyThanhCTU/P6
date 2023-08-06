@@ -19,7 +19,6 @@ const ClientLayout = ({ children }) => {
         <link rel="icon" href={TradeMarkData.websiteIco} />
       </Helmet>
       <Loading />
-
       <Header />
       <div className=" ">{children}</div>
       <Footer />
