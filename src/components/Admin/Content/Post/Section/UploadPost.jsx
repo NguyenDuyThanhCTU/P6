@@ -17,7 +17,7 @@ const UploadPost = () => {
   const [imageUrl, setImageUrl] = useState("");
   const [error, setError] = useState(false);
 
-  const { setPostData } = useData();
+  const { setPostId } = useData();
   const { setIsUploadProduct, setIsRefetch } = useStateProvider();
 
   const uploadImage = async (e, type) => {
@@ -86,7 +86,7 @@ const UploadPost = () => {
           description: `
         Thông tin đã được CẬP NHẬT !`,
         });
-        setPostData(data);
+        setPostId(data);
         setIsUploadProduct("add-post");
         setIsRefetch("add Post");
         HandleDiscard();

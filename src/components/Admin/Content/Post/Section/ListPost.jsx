@@ -12,7 +12,7 @@ import { delDocument } from "../../../../../Config/Services/Firebase/FireStoreDB
 const ListPost = () => {
   const { setIsRefetch, setIsUploadProduct } = useStateProvider();
   const [isOption, setIsOption] = useState(0);
-  const { Posts, setPostData } = useData();
+  const { Posts, setPostId } = useData();
 
   const HandleDelete = (id) => {
     delDocument("posts  ", id).then(() => {
@@ -33,7 +33,7 @@ const ListPost = () => {
   };
 
   const HandleEdit = (id) => {
-    setPostData(id);
+    setPostId(id);
     setIsUploadProduct("add-post");
     setIsOption(0);
   };

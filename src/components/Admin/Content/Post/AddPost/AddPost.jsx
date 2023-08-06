@@ -8,25 +8,32 @@ import { getStorage } from "firebase/storage";
 import { Empty, notification } from "antd";
 
 import { useStateProvider } from "../../../../../Context/StateProvider";
-import { addDocument } from "../../../../../Config/Services/Firebase/FireStoreDB";
+import {
+  addDocument,
+  updateArrayFieldAtIndex,
+} from "../../../../../Config/Services/Firebase/FireStoreDB";
 import { useData } from "../../../../../Context/DataProviders";
 import { PostLayoutItems } from "../../../../../Utils/item";
 import { BiCaretRight } from "react-icons/bi";
 import Input from "../../Item/Input";
+import Post from "../Post";
 
-const AddProduct = ({ type }) => {
+const AddProduct = () => {
   const [imageUrl, setImageUrl] = useState("");
+  const [imageUrl1, setImageUrl1] = useState("");
   const [Title, setTitle] = useState("");
   const [Content, setContent] = useState("");
   const [imageName, setImageName] = useState("");
   const [error, setError] = useState(false);
-  const { PostData } = useData();
+  const { PostId, Posts } = useData();
+  const [PostSort, setPostSort] = useState();
   const { setIsUploadProduct, setIsRefetch } = useStateProvider();
   const [Step, setStep] = useState(0);
   //
   const [selectType, setSelectType] = useState("Mở đầu");
   const [ListType, setListType] = useState("");
   const [selectedType, setSelectedType] = useState("");
+  const [Content1, setContent1] = useState("");
   ///
   useEffect(() => {
     const listType = PostLayoutItems.filter((item) => item.name === selectType);
@@ -35,55 +42,62 @@ const AddProduct = ({ type }) => {
     }
   }, [selectType, PostLayoutItems]);
 
+  useEffect(() => {
+    const post = Posts.filter((item) => item.id === PostId);
+    if (post) {
+      setPostSort(post[0]);
+    }
+  }, [Posts]);
+
   //
   const handleDiscard = () => {
     setImageUrl();
     setTitle("");
     setContent("");
+    setImageName("");
+    setContent1("");
+    setSelectedType("");
   };
 
-  const HandleSubmit = () => {
-    if (!Title || !Content) {
-      notification["error"]({
-        message: "Tải lên không thành công!",
-        description: `Vui lòng bổ sung đầy đủ thông tin !`,
-      });
-    } else {
-      const data = {
-        image: imageUrl,
-        content: Content,
-        title: Title,
-        type: type,
-      };
+  // const HandleSubmit = () => {
+  //   if (!Title || !Content) {
+  //     notification["error"]({
+  //       message: "Tải lên không thành công!",
+  //       description: `Vui lòng bổ sung đầy đủ thông tin !`,
+  //     });
+  //   } else {
+  //     const data = {
+  //       image: imageUrl,
+  //       content: Content,
+  //       title: Title,
+  //       type: type,
+  //     };
 
-      addDocument("posts", data).then(() => {
-        notification["success"]({
-          message: "Tải lên thành công!",
-          description: `Sản phẩm của bạn đã được tải lên !`,
-        });
-        if ((type = "Other")) {
-          setIsRefetch("Add Other Post");
-        } else {
-          setIsRefetch("Add Company Post");
-        }
+  //     addDocument("posts", data).then(() => {
+  //       notification["success"]({
+  //         message: "Tải lên thành công!",
+  //         description: `Sản phẩm của bạn đã được tải lên !`,
+  //       });
+  //       if ((type = "Other")) {
+  //         setIsRefetch("Add Other Post");
+  //       } else {
+  //         setIsRefetch("Add Company Post");
+  //       }
 
-        handleDiscard();
-      });
-    }
-  };
+  //       handleDiscard();
+  //     });
+  //   }
+  // };
 
-  const uploadImage = async (e) => {
+  const uploadImage = async (e, idx) => {
     let selectImage = e.target.files[0];
     const filetypes = ["image/jpeg", "image/jpg", "image/png"];
 
     if (filetypes.includes(selectImage.type)) {
       const storage = getStorage();
       let storageRef = ref(storage, `${selectImage.name}`);
-      if (type === "Other") {
-        storageRef = ref(storage, `Posts/Other/${selectImage.name}`);
-      } else if (type === "Company") {
-        storageRef = ref(storage, `Posts/Company/${selectImage.name}`);
-      }
+
+      storageRef = ref(storage, `Posts/${selectImage.name}`);
 
       uploadBytes(storageRef, selectImage)
         .then((snapshot) => {
@@ -91,7 +105,11 @@ const AddProduct = ({ type }) => {
 
           getDownloadURL(snapshot.ref)
             .then((url) => {
-              setImageUrl(url);
+              if (idx === 1) {
+                setImageUrl(url);
+              } else {
+                setImageUrl1(url);
+              }
             })
             .catch((error) => {
               console.error("Error getting download URL:", error);
@@ -106,7 +124,69 @@ const AddProduct = ({ type }) => {
   };
 
   const HandleUploadContent = () => {
-    data = {};
+    let data = {};
+    if (selectedType === "Beginning-1") {
+      data = {
+        title: Title,
+        content: Content,
+        image: imageUrl,
+        imageName: imageName,
+        type: selectedType,
+      };
+    } else if (
+      selectedType === "Content-1" ||
+      selectedType === "Content-2" ||
+      selectedType === "Content-4"
+    ) {
+      data = {
+        title: Title,
+        content: [Content, Content1],
+        image: imageUrl,
+        imageName: imageName,
+        type: selectedType,
+      };
+    } else if (selectedType === "Content-3") {
+      data = {
+        title: Title,
+        content: [Content, Content1],
+        image: [imageUrl, imageUrl1],
+        imageName: imageName,
+        type: selectedType,
+      };
+    }
+
+    updateArrayFieldAtIndex(
+      "posts",
+      PostId,
+      "content",
+      data,
+      PostSort?.content.length
+    ).then(() => {
+      setIsRefetch("upload post");
+      handleDiscard();
+      notification["success"]({
+        message: "Thành công!",
+        description: `
+      Thông tin đã được CẬP NHẬT !`,
+      });
+    });
+  };
+
+  const HandleStep = (state) => {
+    if (state === "prev") {
+      setStep(1);
+      handleDiscard();
+    } else {
+      if (selectedType) {
+        setStep(2);
+      } else {
+        notification["warning"]({
+          message: "Thao tác không thành công !",
+          description: `
+        Vui lòng chọn Bố Cục trình bày !`,
+        });
+      }
+    }
   };
 
   return (
@@ -127,7 +207,22 @@ const AddProduct = ({ type }) => {
                   Danh sách nội dung đã thêm
                 </p>
               </div>
-              <div className=" border-dashed rounded-xl border-4 border-gray-200 flex flex-col justify-center items-center  outline-none mt-5 w-[260px] h-[458px] p-10 cursor-pointer hover:border-red-300 hover:bg-gray-100"></div>
+              <div className=" border-dashed rounded-xl border-4 border-gray-200    outline-none mt-5 w-[260px] h-[458px]  cursor-pointer hover:border-red-300 hover:bg-gray-100">
+                <div className="h-[450px] w-full p-3 overflow-y-scroll">
+                  {PostSort?.content.map((items, idx) => (
+                    <div className="flex items-center gap-5 py-4">
+                      <div>{items.type}</div>
+                      <div>
+                        <img
+                          src={items.image}
+                          alt="list"
+                          className="h-[50px] object-contain"
+                        />
+                      </div>
+                    </div>
+                  ))}
+                </div>
+              </div>
 
               {error && (
                 <p className="text-center text-xl text-red-400 font-semibold mt-4 w-[260px]">
@@ -191,6 +286,134 @@ const AddProduct = ({ type }) => {
                               <p>Tải lên</p>
                               <AiOutlineCloudUpload className="text-[24px] " />
                             </div>
+                          </div>
+                          <div className="h-full w-[230px] border flex items-center justify-center">
+                            <div className=" p-2 ">
+                              {imageUrl ? (
+                                <>
+                                  {" "}
+                                  <img
+                                    src={imageUrl}
+                                    alt=""
+                                    className="w-full h-auto object-contain"
+                                  />
+                                </>
+                              ) : (
+                                <>
+                                  <Empty />
+                                </>
+                              )}
+                            </div>
+                          </div>
+                        </>
+                      ) : selectedType === "Content-1" ||
+                        selectedType === "Content-2" ||
+                        selectedType === "Content-4" ? (
+                        <>
+                          <div>
+                            <Input
+                              text={`tiêu đề`}
+                              Value={Title}
+                              setValue={setTitle}
+                            />
+                            <Input
+                              text={`nội dung`}
+                              Value={Content}
+                              setValue={setContent}
+                            />
+
+                            <Input
+                              text={`tên ảnh`}
+                              Value={imageName}
+                              setValue={setImageName}
+                            />
+                          </div>
+                          <div>
+                            <Input
+                              text={`nội dung 1`}
+                              Value={Content1}
+                              setValue={setContent1}
+                            />
+                            <Input
+                              text={`Liên kết ảnh`}
+                              Value={imageUrl}
+                              setValue={setImageUrl}
+                            />
+                            <span>Hoặc</span>
+                            <div className="flex gap-1 items-center py-3 justify-center mt-3 bg-red-500 hover:bg-red-600 border text-white rounded-full">
+                              <p>Tải lên</p>
+                              <AiOutlineCloudUpload className="text-[24px] " />
+                            </div>
+                          </div>
+                          <div className="h-full w-[230px] border flex items-center justify-center">
+                            <div className=" p-2 ">
+                              {imageUrl ? (
+                                <>
+                                  {" "}
+                                  <img
+                                    src={imageUrl}
+                                    alt=""
+                                    className="w-full h-auto object-contain"
+                                  />
+                                </>
+                              ) : (
+                                <>
+                                  <Empty />
+                                </>
+                              )}
+                            </div>
+                          </div>
+                        </>
+                      ) : selectedType === "Content-3" ? (
+                        <>
+                          <div>
+                            <Input
+                              text={`tiêu đề`}
+                              Value={Title}
+                              setValue={setTitle}
+                            />
+                            <Input
+                              text={`nội dung`}
+                              Value={Content}
+                              setValue={setContent}
+                            />
+
+                            <Input
+                              text={`tên ảnh`}
+                              Value={imageName}
+                              setValue={setImageName}
+                            />
+                          </div>
+                          <div>
+                            <Input
+                              text={`nội dung 1`}
+                              Value={Content1}
+                              setValue={setContent1}
+                            />
+                            <Input
+                              text={`Liên kết ảnh`}
+                              Value={imageUrl}
+                              setValue={setImageUrl}
+                            />
+                            <span>Hoặc</span>
+                            <label className="flex gap-1 items-center py-3 justify-center mt-3 bg-red-500 hover:bg-red-600 border text-white rounded-full cursor-pointer">
+                              <p>Tải lên ảnh</p>
+                              <AiOutlineCloudUpload className="text-[24px] " />
+                              <input
+                                type="file"
+                                className="w-0 h-0"
+                                onChange={(e) => uploadImage(e, 1)}
+                              />
+                            </label>
+                            <label className="flex gap-1 items-center py-3 justify-center mt-3 bg-red-500 hover:bg-red-600 border text-white rounded-full cursor-pointer">
+                              <p>Tải lên ảnh 1</p>
+                              <AiOutlineCloudUpload className="text-[24px] " />
+                              <input
+                                type="file"
+                                className="w-0 h-0"
+                                onChange={(e) => uploadImage(e, 2)}
+                              />
+                            </label>
                           </div>
                           <div className="h-full w-[230px] border flex items-center justify-center">
                             <div className=" p-2 ">
@@ -275,13 +498,9 @@ const AddProduct = ({ type }) => {
                 <div className="flex gap-5">
                   {Step === 1 || Step === 0 ? (
                     <>
-                      {" "}
-                      <div className="px-10 py-3 rounded-xl border-2 border-blue-400 text-blue-400 hover:text-blue-700 hover:border-blue-700 duration-300 cursor-pointer">
-                        Loại bỏ
-                      </div>
                       <div
                         className="px-10 py-3 rounded-xl border-2 border-blue-500 bg-blue-500 text-white hover:bg-blue-700 duration-300 hover:border-blue-700 cursor-pointer"
-                        onClick={() => setStep(2)}
+                        onClick={() => HandleStep("next")}
                       >
                         Tiếp tục
                       </div>
@@ -291,7 +510,7 @@ const AddProduct = ({ type }) => {
                       <>
                         <div
                           className="px-10 py-3 rounded-xl border-2 border-blue-400 text-blue-400 hover:text-blue-700 hover:border-blue-700 duration-300 cursor-pointer"
-                          onClick={() => setStep(1)}
+                          onClick={() => HandleStep("prev")}
                         >
                           Quay lại
                         </div>
