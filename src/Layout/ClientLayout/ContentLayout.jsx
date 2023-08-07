@@ -14,7 +14,7 @@ import { Link, useLocation } from "react-router-dom";
 const ContentLayout = ({ children }) => {
   const { TradeMarkData } = useData();
   const location = useLocation();
-  console.log(location);
+
   return (
     <>
       <Helmet>

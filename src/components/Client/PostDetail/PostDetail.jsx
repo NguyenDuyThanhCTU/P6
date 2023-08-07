@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import RelatedPosts from "../Item/RelatedPosts";
 import Contact from "../Item/Contact";
 import { useParams } from "react-router-dom";
-import { PostItems } from "../../../Utils/temp";
+
 import Introduction from "../Item/Posts/Introduction";
 import Service from "../Item/Posts/Service";
 import Beginning from "../Item/Posts/Beginning";
@@ -12,34 +12,44 @@ import Content from "../Item/Posts/Content/Content";
 import Content1 from "../Item/Posts/Content/Content1";
 import Content2 from "../Item/Posts/Content/Content2";
 import Content3 from "../Item/Posts/Content/Content3";
+import { useData } from "../../../Context/DataProviders";
 
 const PostDetail = () => {
   const [Data, setData] = useState([]);
 
   const { id } = useParams();
+  const { Posts } = useData();
 
   useEffect(() => {
     window.scrollTo({ top: 0, behavior: "smooth" });
   }, [id]);
+  useEffect(() => {
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  }, []);
 
   useEffect(() => {
-    const sortType = PostItems.filter((product) => product.id === id);
+    let sortType = [];
+    if (Posts) {
+      sortType = Posts?.filter((product) => product.id === id);
+    }
     if (sortType) {
       setData(sortType[0]);
     }
-  }, [id]);
+  }, [Posts]);
 
-  // const DetailPostDate = moment
-  //   .unix(Data?.createdAt.seconds)
-  //   .format("MMMM DD, YYYY");
-  const DetailPostDate = "25-12-2001";
+  let DetailPostDate = "";
+  if (Data?.createdAt) {
+    DetailPostDate = moment
+      .unix(Data?.createdAt.seconds)
+      .format("MMMM DD, YYYY");
+  }
 
   return (
     <div className="border font-Montserrat">
       <div className="p-4 flex flex-col gap-5">
         <div>
           <div className=" pb-5 border-b flex flex-col gap-4">
-            <h3 className="text-title">{Data.title}</h3>
+            <h3 className="text-title">{Data?.title}</h3>
             <div className="flex gap-5">
               <div className="uppercase p-1 text-blue-500 border border-blue-500">
                 Khác
@@ -59,19 +69,19 @@ const PostDetail = () => {
             {Data && (
               <>
                 {" "}
-                {Data.content?.map((items, idx) => (
+                {Data?.content?.map((items, idx) => (
                   <>
-                    {items.type === "beginning" ? (
+                    {items.type === "Beginning-1" ? (
                       <Beginning Data={items} />
                     ) : items.type === "service" ? (
                       <Service />
-                    ) : items.type === "content0" ? (
+                    ) : items.type === "Content-1" ? (
                       <Content Data={items} idx={idx} />
-                    ) : items.type === "content1" ? (
+                    ) : items.type === "Content-2" ? (
                       <Content1 Data={items} idx={idx} />
-                    ) : items.type === "content2" ? (
+                    ) : items.type === "Content-3" ? (
                       <Content2 Data={items} idx={idx} />
-                    ) : items.type === "content3" ? (
+                    ) : items.type === "Content-4" ? (
                       <Content3 Data={items} idx={idx} />
                     ) : null}
                   </>

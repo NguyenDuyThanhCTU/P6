@@ -285,12 +285,12 @@ export const HeaderItems = [
   {
     name: "Vách ngăn palen",
     link: "/collection/vach-ngan-palen",
-    type: "mai-ton",
+    type: "vach-ngan-palen",
   },
   {
     name: "Trần nhựa nano",
     link: "/collection/tran-nhua-nano",
-    type: "mai-ton",
+    type: "tran-nhua-nano",
   },
   {
     name: "Báo giá",

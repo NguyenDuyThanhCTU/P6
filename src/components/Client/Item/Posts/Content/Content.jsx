@@ -22,14 +22,14 @@ const Content = ({ Data, idx }) => {
       </div>
 
       <div className="p:flex  flex-col gap-5  font-Montserrat py-5 d:hidden">
-        <p className="text-note-bold ">" {Data.content}"</p>
+        <p className="text-note-bold ">" {Data.content[0]}"</p>
         <div className="flex flex-col items-center flex-1">
           <img src={Data.image} alt="post" className="h-full" />
           <span className="italic font-semibold text-gray-500">
             {Data.imageName}
           </span>
         </div>
-        <p className="text-content mt-2">{Data.content1}</p>
+        <p className="text-content mt-2">{Data.content[1]}</p>
       </div>
     </div>
   );

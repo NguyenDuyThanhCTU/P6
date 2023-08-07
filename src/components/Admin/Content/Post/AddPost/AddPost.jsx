@@ -282,10 +282,15 @@ const AddProduct = () => {
                               setValue={setImageUrl}
                             />
                             <span>Hoặc</span>
-                            <div className="flex gap-1 items-center py-3 justify-center mt-3 bg-red-500 hover:bg-red-600 border text-white rounded-full">
-                              <p>Tải lên</p>
+                            <label className="flex gap-1 items-center py-3 justify-center mt-3 bg-red-500 hover:bg-red-600 border text-white rounded-full cursor-pointer">
+                              <p>Tải lên ảnh</p>
                               <AiOutlineCloudUpload className="text-[24px] " />
-                            </div>
+                              <input
+                                type="file"
+                                className="w-0 h-0"
+                                onChange={(e) => uploadImage(e, 1)}
+                              />
+                            </label>
                           </div>
                           <div className="h-full w-[230px] border flex items-center justify-center">
                             <div className=" p-2 ">
@@ -340,10 +345,15 @@ const AddProduct = () => {
                               setValue={setImageUrl}
                             />
                             <span>Hoặc</span>
-                            <div className="flex gap-1 items-center py-3 justify-center mt-3 bg-red-500 hover:bg-red-600 border text-white rounded-full">
-                              <p>Tải lên</p>
+                            <label className="flex gap-1 items-center py-3 justify-center mt-3 bg-red-500 hover:bg-red-600 border text-white rounded-full cursor-pointer">
+                              <p>Tải lên ảnh</p>
                               <AiOutlineCloudUpload className="text-[24px] " />
-                            </div>
+                              <input
+                                type="file"
+                                className="w-0 h-0"
+                                onChange={(e) => uploadImage(e, 1)}
+                              />
+                            </label>
                           </div>
                           <div className="h-full w-[230px] border flex items-center justify-center">
                             <div className=" p-2 ">

@@ -39,9 +39,9 @@ const Content2 = ({ Data, idx }) => {
         </div>
       </div>
       <div className="flex flex-col  gap-5  font-Montserrat py-5 ">
-        <p className="text-note-bold">" {Data.content}"</p>
+        <p className="text-note-bold">" {Data.content[0]}"</p>
 
-        <p className="text-content ">{Data.content1}</p>
+        <p className="text-content ">{Data.content[1]}</p>
       </div>
     </div>
   );

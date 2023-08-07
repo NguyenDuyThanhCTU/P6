@@ -15,10 +15,10 @@ const ListPost = () => {
   const { Posts, setPostId } = useData();
 
   const HandleDelete = (id) => {
-    delDocument("posts  ", id).then(() => {
+    delDocument("posts", id).then(() => {
       notification["success"]({
-        message: "Success",
-        description: `Yêu cầu của bạn đã được thực hiện thành công !`,
+        message: "Thành công",
+        description: `Bài viết đã được xóa !`,
       });
     });
     setIsRefetch("deleted");

@@ -10,8 +10,8 @@ import { useStateProvider } from "../../../../../Context/StateProvider";
 import { addDocument } from "../../../../../Config/Services/Firebase/FireStoreDB";
 
 const UploadPost = () => {
-  const [postType, setPostType] = useState("gioi-thieu");
-  const [postName, setPostName] = useState("Giới thiệu");
+  const [postType, setPostType] = useState("");
+  const [postName, setPostName] = useState("");
   const [Step, setStep] = useState(0);
   const [Title, setTitle] = useState("");
   const [imageUrl, setImageUrl] = useState("");
@@ -26,7 +26,7 @@ const UploadPost = () => {
 
     if (filetypes.includes(selectImage.type)) {
       const storage = getStorage();
-      const storageRef = ref(storage, `img/logo`);
+      let storageRef = ref(storage, `posts/${selectImage.name}`);
 
       uploadBytes(storageRef, selectImage)
         .then((snapshot) => {
@@ -50,10 +50,26 @@ const UploadPost = () => {
 
   const HandleDiscard = () => {
     setImageUrl("");
-    setPostType("gioi-thieu");
-    setPostName("Giới thiệu");
+    setPostType("");
+    setPostName("");
     setTitle("");
     setStep(0);
+  };
+  const HandleStep = (idx) => {
+    if (idx === 1) {
+      HandleDiscard("");
+      setStep(1);
+    } else {
+      if (!postName) {
+        notification["error"]({
+          message: "Lỗi !",
+          description: `
+  Vui lòng chọn mục bài viết !`,
+        });
+      } else {
+        setStep(2);
+      }
+    }
   };
 
   const handleTitleChange = (e) => {
@@ -127,7 +143,7 @@ const UploadPost = () => {
                   onChange={handleTitleChange}
                   onClick={() => setStep(1)}
                 >
-                  {HeaderItems.slice(1, 6).map((item, idx) => (
+                  {HeaderItems.slice(2, 8).map((item, idx) => (
                     <option
                       key={idx}
                       className=" outline-none capitalize bg-white text-gray-700 text-md p-2 hover:bg-slate-300"
@@ -193,7 +209,7 @@ const UploadPost = () => {
               </div>
               <div
                 className="px-10 py-3 rounded-xl border-2 border-blue-500 bg-blue-500 text-white hover:bg-blue-700 duration-300 hover:border-blue-700 cursor-pointer"
-                onClick={() => setStep(2)}
+                onClick={() => HandleStep(2)}
               >
                 Tiếp tục
               </div>
@@ -203,7 +219,7 @@ const UploadPost = () => {
               <>
                 <div
                   className="px-10 py-3 rounded-xl border-2 border-blue-400 text-blue-400 hover:text-blue-700 hover:border-blue-700 duration-300 cursor-pointer"
-                  onClick={() => setStep(1)}
+                  onClick={() => HandleStep(1)}
                 >
                   Quay lại
                 </div>

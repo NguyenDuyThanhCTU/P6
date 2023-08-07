@@ -1,7 +1,7 @@
 import React from "react";
 
 const Content3 = ({ Data, idx }) => {
-  const contentArray = Data?.content1.split(".");
+  const contentArray = Data?.content[0].split(".");
   return (
     <div>
       <h3 className="uppercase font-bold text-[25px]">
@@ -9,7 +9,7 @@ const Content3 = ({ Data, idx }) => {
       </h3>
       <div className="d:flex  gap-5  font-Montserrat py-5 d:flex-row p:flex-col">
         <div className="flex-1">
-          <p className="text-note-bold">" {Data.content}"</p>
+          <p className="text-note-bold">" {Data.content[0]}"</p>
           <div className="text-list mt-5">
             {contentArray?.map((item, index) => (
               <div>

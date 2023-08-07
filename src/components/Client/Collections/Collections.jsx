@@ -3,10 +3,12 @@ import { Link, useParams } from "react-router-dom";
 import { PostItems } from "../../../Utils/temp";
 import { AiOutlineClockCircle, AiOutlineUser } from "react-icons/ai";
 import moment from "moment/moment";
+import { useData } from "../../../Context/DataProviders";
 
 const Collections = () => {
   const [Data, setData] = useState([]);
   const { id } = useParams();
+  const { Posts } = useData();
 
   useEffect(() => {
     window.scrollTo({ top: 0, behavior: "smooth" });
@@ -16,11 +18,14 @@ const Collections = () => {
   }, []);
 
   useEffect(() => {
-    const sortType = PostItems.filter((product) => product.type === id);
+    let sortType = [];
+    if (Posts) {
+      sortType = Posts?.filter((product) => product.type === id);
+    }
     if (sortType) {
       setData(sortType);
     }
-  }, [id]);
+  }, [Posts, id]);
 
   return (
     <div className="min-h-screen">
@@ -40,10 +45,10 @@ const Collections = () => {
                   />
                 </div>
                 <div className="flex-[65%] flex flex-col gap-1">
-                  <h3 className="font-semibold d:text-[18px] p:text-[16px] hover:underline hover:text-blue-500">
+                  <h3 className="font-semibold d:text-[18px] p:text-[16px] hover:underline hover:text-blue-500 uppercase">
                     {items.title}
                   </h3>
-                  <p className="truncate2 d:text-[16px] p:text-[14px]">
+                  <p className="truncate2 d:text-[16px] p:text-[14px] up">
                     {items.content[0]?.title}
                   </p>
                   <div className="flex p:gap-1 d:gap-5 mt-3 d:flex-row p:flex-col">
