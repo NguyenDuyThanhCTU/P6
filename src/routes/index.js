@@ -10,6 +10,8 @@ import AdminLayout from "../Layout/AdminLayout/AdminLayout";
 
 import ContentLayout from "../Layout/ClientLayout/ContentLayout";
 import ClientLayout from "../Layout/ClientLayout/ClientLayout";
+import Mayton1 from "../components/Client/PostList/Mayton1";
+import Mayton2 from "../components/Client/PostList/Mayton2";
 
 export const AllRoutes = [
   {
@@ -45,6 +47,18 @@ export const AllRoutes = [
   {
     path: "/post/:id",
     component: PostDetail,
+    Layout: ContentLayout,
+  },
+
+  //
+  {
+    path: "/post/sua-chua-mai-ton-tai-ha-noi",
+    component: Mayton1,
+    Layout: ContentLayout,
+  },
+  {
+    path: "/post/dich-vu-lap-dat-mai-ton-tron-goi-uy-tin-chat-luong-tai-ha-noi",
+    component: Mayton2,
     Layout: ContentLayout,
   },
 ];

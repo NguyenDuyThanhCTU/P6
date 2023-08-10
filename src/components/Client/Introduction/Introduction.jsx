@@ -39,7 +39,7 @@ const Introduction = () => {
                 <p className="  ">
                   <span className="italic text-red-500 font-bold">
                     {" "}
-                    Cơ khí mái tôn An Nhiên
+                    Cơ khí mái tôn Trung Hiếu
                   </span>{" "}
                   tham gia hoạt động ngành cơ khí và rất hãnh diện được đóng góp
                   sức mình vào sự nghiệp phát triển chung của ngành cơ khí Việt
@@ -48,7 +48,7 @@ const Introduction = () => {
                 <p>
                   Qua nhiều năm hoạt động,{" "}
                   <span className="italic text-red-500 font-bold">
-                    Cơ khí mái tôn An Nhiên
+                    Cơ khí mái tôn Trung Hiếu
                   </span>{" "}
                   không ngừng vươn lên và đã khẳng định được vị trí của mình
                   trong ngành. Cho đến nay chúng tôi rất tự hào về chất lượng đã
@@ -64,7 +64,7 @@ const Introduction = () => {
                   tình và năng động đảm bảo cho chất lượng công trình và sản
                   phẩm luôn chắc chắn bền đẹp với thời gian.{" "}
                   <span className="italic text-red-500 font-bold">
-                    Cơ khí mái tôn An Nhiên
+                    Cơ khí mái tôn Trung Hiếu
                   </span>{" "}
                   đã và đang được nhiều khách hàng tìm đến và lựa chọn sản phẩm.
                   Sự gia tăng số lượng khách hàng đông đồng nghĩa với sự phát
@@ -78,7 +78,7 @@ const Introduction = () => {
                   về chất lượng sản phẩm và dịch vụ luôn là mục tiêu đề ra hàng
                   đầu của{" "}
                   <span className="italic text-red-500 font-bold">
-                    Cơ khí mái tôn An Nhiên
+                    Cơ khí mái tôn Trung Hiếu
                   </span>
                 </p>
               </div>

@@ -95,6 +95,7 @@ const UploadPost = () => {
         type: postType,
         nameType: postName,
         content: [],
+        // url: "sua-chua-mai-ton-tai-ha-noi",
       };
       addDocument("posts", data).then((data) => {
         notification["success"]({

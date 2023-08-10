@@ -34,7 +34,10 @@ const Collections = () => {
           .unix(items.createdAt.seconds)
           .format("MMMM DD, YYYY");
         return (
-          <Link to={`/post/${items.id}`}>
+          <Link
+            to={`${items.url ? `/post/${items.url}` : `/post/${items.id}`}`}
+          >
+            {console.log(items)}
             <div className="border shadow-md cursor-pointer hover:shadow-xl duration-300">
               <div className="flex gap-5 p-3">
                 <div className="flex-[35%]">

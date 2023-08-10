@@ -168,6 +168,13 @@
   text-indent: 1.25rem;
 }
 
+.text-content1{
+  font-family: 'Lexend Deca',sans-serif;
+  font-size: 18px;
+  font-weight:  300;
+  
+}
+
 .text-note{
   font-family: 'Montserrat',sans-serif;
   font-size: 26px;
@@ -194,7 +201,14 @@ font-weight: 300;
   font-family: 'Lexend Deca',sans-serif;
   font-size: 18px;
   font-weight:  300;
-  text-indent: 1.25rem;
+  text-indent: 0.5rem;
+}
+
+.text-title-blue{
+font-size: 18px;
+padding-top: 1.25rem;
+padding-bottom: 1.25rem;
+color: blue;
 }
 
 

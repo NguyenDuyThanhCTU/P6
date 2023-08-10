@@ -59,36 +59,6 @@ const AddProduct = () => {
     setSelectedType("");
   };
 
-  // const HandleSubmit = () => {
-  //   if (!Title || !Content) {
-  //     notification["error"]({
-  //       message: "Tải lên không thành công!",
-  //       description: `Vui lòng bổ sung đầy đủ thông tin !`,
-  //     });
-  //   } else {
-  //     const data = {
-  //       image: imageUrl,
-  //       content: Content,
-  //       title: Title,
-  //       type: type,
-  //     };
-
-  //     addDocument("posts", data).then(() => {
-  //       notification["success"]({
-  //         message: "Tải lên thành công!",
-  //         description: `Sản phẩm của bạn đã được tải lên !`,
-  //       });
-  //       if ((type = "Other")) {
-  //         setIsRefetch("Add Other Post");
-  //       } else {
-  //         setIsRefetch("Add Company Post");
-  //       }
-
-  //       handleDiscard();
-  //     });
-  //   }
-  // };
-
   const uploadImage = async (e, idx) => {
     let selectImage = e.target.files[0];
     const filetypes = ["image/jpeg", "image/jpg", "image/png"];
@@ -335,7 +305,11 @@ const AddProduct = () => {
                           </div>
                           <div>
                             <Input
-                              text={`nội dung 1`}
+                              text={`${
+                                selectedType === "Content-2"
+                                  ? "Nội dung đầu"
+                                  : "các mục"
+                              }`}
                               Value={Content1}
                               setValue={setContent1}
                             />
@@ -524,27 +498,13 @@ const AddProduct = () => {
                         >
                           Quay lại
                         </div>
-                        {imageUrl ? (
-                          <div
-                            className="px-10 py-3 rounded-xl border-2 border-blue-500 bg-blue-500 text-white hover:bg-blue-700 duration-300 hover:border-blue-700 cursor-pointer"
-                            onClick={() => HandleUploadContent()}
-                          >
-                            Thêm nội dung
-                          </div>
-                        ) : (
-                          <div
-                            className="px-10 py-3 rounded-xl border-2 border-blue-500 bg-blue-500 text-white hover:bg-blue-700 duration-300 hover:border-blue-700 cursor-pointer"
-                            onClick={() => {
-                              notification["warning"]({
-                                message: "Warning",
-                                description: `
-                  Hình ảnh đang tải lên, vui lòng đợi trong giây lát !`,
-                              });
-                            }}
-                          >
-                            Thêm nội dung
-                          </div>
-                        )}
+
+                        <div
+                          className="px-10 py-3 rounded-xl border-2 border-blue-500 bg-blue-500 text-white hover:bg-blue-700 duration-300 hover:border-blue-700 cursor-pointer"
+                          onClick={() => HandleUploadContent()}
+                        >
+                          Thêm nội dung
+                        </div>
                       </>
                     )
                   )}

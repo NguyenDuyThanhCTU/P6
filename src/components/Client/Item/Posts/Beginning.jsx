@@ -5,7 +5,7 @@ const Beginning = ({ Data }) => {
     <div className="flex flex-col gap-5  font-Montserrat py-5">
       <p className="text-note">"{Data.title}"</p>
       <div className="flex flex-col items-center">
-        <img src={Data.image} alt="post" />
+        {Data.image && <img src={Data.image} alt="post" />}
         <span className="italic font-semibold text-gray-500">
           {Data.imageName}
         </span>
