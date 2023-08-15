@@ -11,23 +11,23 @@ const Section2 = () => {
         <div className="flex mt-4 gap-10 d:max-w-[1200px] d:mx-auto d:flex-row p:flex-col p:max-w-full p:mx-2">
           <div className="flex flex-col gap-5 flex-1 items-center font-NunitoSans ">
             <p>
-              <strong> Cơ khí mái tôn Trung Hiếu </strong>chuyên thi công, sửa
-              chữa mái tôn, máng xối inox 304 đúng chất lượng bảo hành cho quy
-              khách trong vấn đề mưa gió, cũng như chất lượng của máng đúng
-              chuẩn hàng inox304, thoải mái mới thanh toán.
+              <strong> Cơ khí Trung Hiếu </strong>Chuyên thiết kế - thi công lợp
+              mái tôn, mái tôn chống ồn, Thi công Nhà Xưởng – Nhà Thép Tiền Chế,
+              Cửa Sắt, Cửa Cổng Sắt, Cửa Nhôm Kính, Vách Nhôm Kính, Dịch vụ về
+              inox,...
             </p>
             <p>
-              Quý khách đến với chúng tôi cứ yên tâm một điều về trình độ, kỹ
-              thuật và nhân lực… để tạo niềm tin với khách hàng sẽ không ứng
-              tiền trước, trừ khi công trình đã làm khoảng 70% khối lượng công
-              việc, còn bao nhiêu nữa xong công trình chúng tôi sẽ để lại qua
-              mưa gió thoải mái quý khách kiểm tra thoải mái chúng tôi mới thanh
-              toán hết tiền. Quý khách đã đến với chúng cứ yên tâm về công việc
-              cũng như an toàn lao động, nếu có vấn đề gì về lao động{" "}
-              <strong>Cơ khí mái tôn Trung Hiếu</strong> sẽ chịu hoàn toàn trách
-              nhiệm trước pháp luật và cũng như bên gia chủ.
+              Bằng sự nỗ lực không ngừng nghỉ chúng tôi đã từng bước khẳng định
+              được vị thế thương hiệu của mình trên thị trường và xây dựng được
+              niềm tin đối với khách hàng.
             </p>
-            <Link to="/lien-he">
+            <p>
+              Với nhiều năm kinh nghiệm trong nghề, cùng đội ngũ kỹ sư và công
+              nhân chất lượng cao. Chúng tôi luôn cam kết sẽ cho quý khách một
+              sự lựa chọn thích hợp nhất về kích thước, các mẫu mã đẹp, giá cả
+              cạnh tranh với thị trường.
+            </p>
+            <Link to="/post/9IQtWurWlbLdvVSKK2sB">
               <div className="text border-b-2 hover:scale-110 duration-300 cursor-pointer font-bold">
                 Xem tiếp
               </div>

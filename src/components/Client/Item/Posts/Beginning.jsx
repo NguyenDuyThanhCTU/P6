@@ -3,7 +3,7 @@ import React from "react";
 const Beginning = ({ Data }) => {
   return (
     <div className="flex flex-col gap-5  font-Montserrat py-5">
-      <p className="text-note">"{Data.title}"</p>
+      {Data.title && <p className="text-note">"{Data.title}"</p>}
       <div className="flex flex-col items-center">
         {Data.image && <img src={Data.image} alt="post" />}
         <span className="italic font-semibold text-gray-500">

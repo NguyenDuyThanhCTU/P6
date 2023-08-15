@@ -20,7 +20,11 @@ const Collections = () => {
   useEffect(() => {
     let sortType = [];
     if (Posts) {
-      sortType = Posts?.filter((product) => product.type === id);
+      if (id === "tin-tuc") {
+        sortType = Posts;
+      } else {
+        sortType = Posts?.filter((product) => product.type === id);
+      }
     }
     if (sortType) {
       setData(sortType);
